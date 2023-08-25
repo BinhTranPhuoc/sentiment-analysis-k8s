@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: sa-client2
+  labels: 
+   app: sa-client
+spec:
+  containers:
+    - image: binhtran240297/sa-client
+      name: sa-client
+      ports:
+        - containerPort: 80

@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sa-client
+spec:
+  selector:
+    matchLabels:
+      app: sa-client                                    
+  replicas: 2
+  minReadySeconds: 15
+  strategy:
+    type: RollingUpdate
+    rollingUpdate: 
+      maxUnavailable: 1
+      maxSurge: 1
+  template:
+    metadata:
+      labels:
+        app: sa-client
+    spec:
+      containers:
+        - image: binhtran240297/sa-client:minikube1
+          imagePullPolicy: Always
+          name: sa-client
+          ports:
+            - containerPort: 80
